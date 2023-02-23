@@ -1,0 +1,7 @@
+﻿  snowfall.cpp
+C:\Users\kuzne\Desktop\универ\1 курс\Курсовая\snowfall\classes.h(63,1): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
+C:\Users\kuzne\Desktop\универ\1 курс\Курсовая\snowfall\classes.h(64,1): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
+C:\Users\kuzne\Desktop\универ\1 курс\Курсовая\snowfall\snowfall.cpp(26,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\kuzne\Desktop\универ\1 курс\Курсовая\snowfall\snowfall.cpp(111,22): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\kuzne\Desktop\универ\1 курс\Курсовая\snowfall\snowfall.cpp(67,8): warning C4101: spawn: неиспользованная локальная переменная
+  snowfall.vcxproj -> C:\Users\kuzne\Desktop\универ\1 курс\Курсовая\snowfall\Debug\snowfall.exe

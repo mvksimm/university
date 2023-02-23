@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/article.css" />
+    <title>Внешнее API</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navigation__wrapper">
+            <div class="header__logo">
+                The Site
+            </div>
+            <ul class="navigation">
+                <li class="navigation__item">
+                    <a href="article.html" class="navigation__link">
+                        Статья
+                        </a>
+                </li>
+                <li class="navigation__item">
+                    <a href="notes.html" class="navigation__link">
+                        Заметки
+                        </a>
+                </li>
+                <li class="navigation__item">
+                    <a href="statistics.html" class="navigation__link">
+                        Статистика
+                        </a>
+                </li>
+                <li class="navigation__item">
+                    <a href="registr.php" class="navigation__link">
+                        Регистрация
+                        </a>
+                </li>
+                <li class="navigation__item active">
+                    <a href="API.html" class="navigation__link">
+                        API
+                        </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="col-7 m-auto">
+        <div class="row row-cols-1 row-cols-xl-2">
+            <div class="col">
+                <canvas id="myChart" width="1" height="1"></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            datasets: [{
+                                label: 'График котировок',
+                                backgroundColor: 'rgba(75, 192, 192,0.5)', 
+                                borderColor: 'rgba(75, 192, 192,1)',
+                                borderWidth: 1,
+                                fill: 'start',
+                                tension: 0.4,
+                            }]
+                        }
+                    });
+                    
+                
+                </script>
+            </div>
+            <div class="col">
+                <form id="form" method="post"> 
+                    <div class="row row-cols-1">
+                        <div class="col">
+                            <label>Наименование компании</label>
+                            <select id="inputRole" name="secid" class="form-control form-select" required>
+                                <option selected value="SBER">Сбербанк</option>
+                                <option value="GAZP">ГАЗПРОМ ао</option>
+                                <option value="LKOH">ЛУКОЙЛ</option>
+                                <option value="YNDX">Yandex clA</option>
+                                <option value="GMKN">ГМКНорНик</option>
+                                <option value="NVTK">Новатэк ао</option>
+                                <option value="POLY">Polymetal</option>
+                                <option value="ROSN">Роснефть</option>
+                                <option value="PLZL">Полюс</option>
+                                <option value="MGNT">Магнит ао</option>
+                                <option value="MTSS">МТС-ао</option>
+                                <option value="TATN">Татнфт 3ао</option>
+                                <option value="NLMK">НЛМК ао</option>
+                                <option value="TCSG">TCS-гдр</option>
+                                <option value="SNGS">Сургнфгз</option>
+                                <option value="IMOEX">Индекс Московской биржи</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label>Интервал графика</label>
+                            <select id="inputRole" name="interval" class="form-control form-select" required>
+                                <option selected value="1">1 минута</option>
+                                <option value="10">10 минут</option>
+                                <option value="60">1 час</option>
+                                <option value="24">1 день</option>
+                                <option value="7">1 неделя</option>
+                                <option value="31">1 месяц</option>
+                                <option value="4">1 квартал</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label>Кол-во записей в ответе</label>
+                            <input type="number" value="500" min="1" max="1700" name="limits" class="form-control" id="inputRate" placeholder="Выберите значение" required>
+                        </div>
+                        <div class="col">
+                            <label>Начиная с даты</label>
+                            <input type="date" name="start" class="form-control" id="inputDate" placeholder="Дата смены пароля" required>
+                        </div>
+                    </div>
+                    </form>
+                    <div class="col mt-2">
+                        <button id="but" class="but form-control">Получить данные</button>
+                    </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        $( "input[type*='date']" ).val((new Date(Date.now() - 24 * 60 * 60 * 1000)).toISOString().substr(0, 10));
+        
+        $(".but").click(function(){
+            var formData = $("#form").serializeArray();
+            var time_from = new Date(formData[3].value).getTime();
+            var number_of_dots = formData[2].value;
+            var time_graph_to;
+            var time_step = formData[1].value;
+        switch (time_step) {
+        case '1':
+            time_graph_to = time_from + 1000 * 60 * 60 * 7 + number_of_dots * 1 * 1000 * 60;
+            break;
+        case '10':
+            time_graph_to = time_from + 1000 * 60 * 10 * 41 + number_of_dots * 10 * 1000 * 60;
+            break;
+        case '60':
+            time_graph_to = time_from + 1000 * 60 * 60 * 6 + number_of_dots * 60 * 1000 * 60;
+            break;
+        case '24':
+            time_graph_to = time_from + number_of_dots * 24 * 60 * 1000 * 60;
+            break;
+        case '7':
+            time_graph_to = time_from + number_of_dots * 7 * 24 * 60 * 1000 * 60;
+            break;
+        case '31':
+            time_graph_to = time_from + number_of_dots * 31 * 24 * 60 * 1000 * 60;
+            break;
+        case '4':
+            time_graph_to = time_from + number_of_dots * 3 * 31 * 24 * 60 * 1000 * 60;
+            break;
+        default:
+            alert( "Нет таких значений" );
+        }
+        console.log(new Date(time_from));
+        console.log(new Date(time_graph_to));
+        console.log(new Date(Date.now()));
+        if (time_graph_to >= Date.now()) {
+            formData.push({name : "app_key", value: "lpDRhW4f%5Bj|i8mB~BjlCD#Ve6wAi"});
+            console.log(formData);
+            $.post("https://sedelkin.ru/api/history/get_data", formData)
+            .done(function( data ) {
+                myChart.config._config.data.labels = [];
+                myChart.config._config.data.datasets[0].data = [];
+                myChart.config._config.data.datasets[0].label = formData[0].value;
+                
+                if(data.status == 'OK'){
+                    data.data.forEach( function (obj){
+                        myChart.config._config.data.labels.push(obj.datetime);
+                        myChart.config._config.data.datasets[0].data.push(obj.close);
+                    });
+                }
+                
+                myChart.update();
+            });
+        } else {
+            alert("Актуальная дата не помещается((");
+        }});
+
+    </script> 
+    <footer class="footer">
+        <p class="footer__copyrights">© Copyrights 2021</p>
+    </footer>
+</body>
+</html>

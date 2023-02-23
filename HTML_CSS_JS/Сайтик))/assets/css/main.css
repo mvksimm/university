@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap');
+
+*, *:before, *:after {
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0;
+	border: none;
+}
+
+html {
+	font-size: 16px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	background-color: #FFFAF0;
+}
+
+h1 {font-size: 32px;}
+
+h2 {font-size: 25px;}
+
+h3 {font-size: 22px;}
+
+h4 {font-size: 20px;}
+
+h5 {font-size: 17px;}
+
+
+@media (min-width: 600px) {
+	h1 {font-size: 40px;}
+
+	h2 {font-size: 32px;}
+
+	h3 {font-size: 26px;}
+
+	h4 {font-size: 22px;}
+
+	h5 {font-size: 18px;}
+}
+
+.header {
+	width: 100%;
+	position: sticky;
+	top: 0;
+	left: 0;
+	background-color: #FFFAF0;
+	padding-top: 30px;
+	z-index: 100;
+}
+
+@media (min-width: 530px) {
+	.header {
+		padding-top: 0px;
+		height: 50px;
+	}
+}
+
+.header__logo {
+	font-size: 21px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+	margin-bottom: 16px;
+}
+
+@media (min-width: 530px) {
+	.header__logo {
+		margin-bottom: 0px;
+	}
+}
+
+.navigation__wrapper {
+	width: 84vw;
+	height: 100%;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+@media (min-width: 530px) {
+	.navigation__wrapper {
+		flex-direction: row;
+	}
+}
+
+.navigation {
+	height: 100%;
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+}
+
+@media (min-width: 400px) {
+	.navigation {
+		flex-direction: row;
+		justify-content: flex-end;
+		width: auto;
+	}
+
+	.navigation__item, .navigation__link {
+		width: fit-content;
+	}
+}
+
+.navigation__item, .navigation__link {
+	width: 100%;
+	text-align: center;
+}
+
+.navigation__item {
+	height: 100%;
+}
+
+.navigation__item.active {
+	background-color: rgba(12, 12, 12, 0.2);
+}
+
+.navigation__link {
+	text-decoration: none;
+	color: black;
+	display: block;
+	padding: 12px 20px;
+}
+
+.container {
+	max-width: 86vw;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.footer {
+	width: 100%;
+	height: 40px;
+	margin-top: 140px;
+}
+
+.footer__copyrights {
+	margin: 0 auto;
+	font-size: 12px;
+	text-align: center;
+}
+
+.page {
+	padding-top: 120px;
+}
+
+.page-title {
+	margin-bottom: 40px;
+}

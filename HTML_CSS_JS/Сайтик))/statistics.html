@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/statistics.css" />
+	<title>Статистика</title>
+</head>
+<body>
+	<header class="header">
+		<nav class="navigation__wrapper">
+			<div class="header__logo">
+				The Site
+			</div>
+
+			<ul class="navigation">
+				<li class="navigation__item">
+					<a href="article.html" class="navigation__link">
+						Статья
+					</a>
+				</li>
+				<li class="navigation__item">
+					<a href="notes.html" class="navigation__link">
+						Заметки
+					</a>
+				</li>
+				<li class="navigation__item active">
+					<a href="statistics.html" class="navigation__link">
+						Статистика
+					</a>
+				</li>
+				<li class="navigation__item">
+					<a href="registr.php" class="navigation__link">
+						Регистрация
+					</a>
+				</li>
+				<li class="navigation__item">
+					<a href="API.html" class="navigation__link">
+					API
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+
+	<main class="page container statistics-page">
+		<h1 class="page-title">Статистика</h1>
+
+		<div class="chart-wrapper">
+			<canvas id="myChart" class="canvas" />
+		</div>
+		<button onclick="change_colors()" class="button change-color-button">Сменить цвета</button>
+
+		<div class="table-wrapper">
+			<table class="statistics__table">
+				<thead>
+					<tr>
+						<td>
+							Возраст
+						</td>
+						<td>
+							Примерное количество прожитых дней
+						</td>
+						<td>
+							Примерное количество часов сна
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+
+
+					<tr>
+						<td>1</td>
+						<td>365</td>
+						<td>2920</td>
+					</tr>
+
+
+					<tr>
+						<td>2</td>
+						<td>730</td>
+						<td>5840</td>
+					</tr>
+
+
+					<tr>
+						<td>3</td>
+						<td>1095</td>
+						<td>8760</td>
+					</tr>
+
+
+					<tr>
+						<td>4</td>
+						<td>1460</td>
+						<td>11680</td>
+					</tr>
+
+
+					<tr>
+						<td>5</td>
+						<td>1825</td>
+						<td>14600</td>
+					</tr>
+
+
+					<tr>
+						<td>6</td>
+						<td>2190</td>
+						<td>17520</td>
+					</tr>
+
+
+					<tr>
+						<td>7</td>
+						<td>2555</td>
+						<td>20440</td>
+					</tr>
+
+
+					<tr>
+						<td>8</td>
+						<td>2920</td>
+						<td>23360</td>
+					</tr>
+
+
+					<tr>
+						<td>9</td>
+						<td>3285</td>
+						<td>26280</td>
+					</tr>
+
+
+					<tr>
+						<td>10</td>
+						<td>3650</td>
+						<td>29200</td>
+					</tr>
+
+
+					<tr>
+						<td>11</td>
+						<td>4015</td>
+						<td>32120</td>
+					</tr>
+
+
+					<tr>
+						<td>12</td>
+						<td>4380</td>
+						<td>35040</td>
+					</tr>
+
+
+					<tr>
+						<td>13</td>
+						<td>4745</td>
+						<td>37960</td>
+					</tr>
+
+
+					<tr>
+						<td>14</td>
+						<td>5110</td>
+						<td>40880</td>
+					</tr>
+
+
+					<tr>
+						<td>15</td>
+						<td>5475</td>
+						<td>43800</td>
+					</tr>
+
+
+					<tr>
+						<td>16</td>
+						<td>5840</td>
+						<td>46720</td>
+					</tr>
+
+
+					<tr>
+						<td>17</td>
+						<td>6205</td>
+						<td>49640</td>
+					</tr>
+
+
+					<tr>
+						<td>18</td>
+						<td>6570</td>
+						<td>52560</td>
+					</tr>
+
+
+					<tr>
+						<td>19</td>
+						<td>6935</td>
+						<td>55480</td>
+					</tr>
+
+
+					<tr>
+						<td>20</td>
+						<td>7300</td>
+						<td>58400</td>
+					</tr>
+
+
+					<tr>
+						<td>21</td>
+						<td>7665</td>
+						<td>61320</td>
+					</tr>
+
+
+					<tr>
+						<td>22</td>
+						<td>8030</td>
+						<td>64240</td>
+					</tr>
+
+
+					<tr>
+						<td>23</td>
+						<td>8395</td>
+						<td>67160</td>
+					</tr>
+
+
+					<tr>
+						<td>24</td>
+						<td>8760</td>
+						<td>70080</td>
+					</tr>
+
+
+					<tr>
+						<td>25</td>
+						<td>9125</td>
+						<td>73000</td>
+					</tr>
+
+
+					<tr>
+						<td>26</td>
+						<td>9490</td>
+						<td>75920</td>
+					</tr>
+
+
+					<tr>
+						<td>27</td>
+						<td>9855</td>
+						<td>78840</td>
+					</tr>
+
+
+					<tr>
+						<td>28</td>
+						<td>10220</td>
+						<td>81760</td>
+					</tr>
+
+
+					<tr>
+						<td>29</td>
+						<td>10585</td>
+						<td>84680</td>
+					</tr>
+
+
+					<tr>
+						<td>30</td>
+						<td>10950</td>
+						<td>87600</td>
+					</tr>
+
+
+					<tr>
+						<td>31</td>
+						<td>11315</td>
+						<td>90520</td>
+					</tr>
+
+
+					<tr>
+						<td>32</td>
+						<td>11680</td>
+						<td>93440</td>
+					</tr>
+
+
+					<tr>
+						<td>33</td>
+						<td>12045</td>
+						<td>96360</td>
+					</tr>
+
+
+					<tr>
+						<td>34</td>
+						<td>12410</td>
+						<td>99280</td>
+					</tr>
+
+
+					<tr>
+						<td>35</td>
+						<td>12775</td>
+						<td>102200</td>
+					</tr>
+
+
+					<tr>
+						<td>36</td>
+						<td>13140</td>
+						<td>105120</td>
+					</tr>
+
+
+					<tr>
+						<td>37</td>
+						<td>13505</td>
+						<td>108040</td>
+					</tr>
+
+
+					<tr>
+						<td>38</td>
+						<td>13870</td>
+						<td>110960</td>
+					</tr>
+
+
+					<tr>
+						<td>39</td>
+						<td>14235</td>
+						<td>113880</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<p class="footer__copyrights">© Copyrights 2021</p>
+	</footer>
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+	<script type="text/javascript" src="src/statistics.js"></script>
+</body>
+</html>

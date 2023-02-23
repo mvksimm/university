@@ -1,0 +1,128 @@
+.article-title {
+	margin-bottom: 24px;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+}
+
+.article {
+	font-size: 16px;
+	line-height: 1.61;
+	letter-spacing: 0.07em;
+}
+
+@media (min-width: 650px) {
+	.article {
+		font-size: 16px;
+	}
+}
+
+.article__body {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 60px 40px;
+}
+
+@media (min-width: 700px) {
+	.article__body {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+
+.article__paragraph:nth-child(3),
+.article__paragraph:nth-child(4) {
+	grid-column: 1/-1;
+}
+
+
+.article__paragraph-title {
+	text-transform: uppercase;
+	font-weight: 500;
+	margin-bottom: 16px;
+}
+
+.article__paragraph-body {
+	text-align: justify;
+}
+
+.article__navigation {
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+	gap: 20px;
+}
+
+.article__navigation-link {
+	padding: 12px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	font-size: 12px;
+	background-color: rgba(12, 12, 12, 0.1);
+}
+
+.sources__wrapper {
+	margin-top: 120px;
+	padding-left: 20px;
+}
+
+.sources__item {
+	font-size: 14px;
+	letter-spacing: 0.1em;
+	margin-bottom: 20px;
+	line-height: 1.81;
+}
+
+
+
+
+/* КАРТИНКА С РАМКОЙ И ПОДПИСЬЮ */
+
+.article__image-wrapper {
+	width: 100%;
+	margin-bottom: 32px;
+	border: 3px dashed gainsboro;
+}
+
+.article__image {
+	display: block;
+	width: 100%;
+	position: relative;
+	height: auto;
+}
+
+.article__image::after {
+	content: attr(data-label);
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 14px;
+	line-height: 1.41;
+}
+
+.image-button.active {
+	position: relative;
+}
+
+.image-button.active picture {
+	z-index: 1000;
+	position: fixed;
+	width: 94%;
+	height: auto;
+	left: 3%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.image-button.active:before {
+	content: '';
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+}
